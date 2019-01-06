@@ -8,49 +8,82 @@ import Card from './Card'
 import Box from './Box'
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = { cuttedDeck: this.drawDeck()}
+    this.state = { 
+      pileOne: [],
+      pileTwo: [],
+      pileThree: [],
+    }
   }
 
-  async getDeck(){
+  async getDeck() {
     const deck = await axios.get('https://deckofcardsapi.com/api/deck/new/shuffle')
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
     return deck;
   }
 
-  async remontDeck(){
+  async remontDeck() {
     await axios.get('https://deckofcardsapi.com/api/deck/7kyhwcq3nxhi/shuffle/')
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
   }
 
-  async drawDeck(){
+  async pile(){
     const cuttedDeck = await axios.get('https://deckofcardsapi.com/api/deck/7kyhwcq3nxhi/draw/?count=7')
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
     await this.remontDeck()
-    return cuttedDeck
+    const { data } = cuttedDeck
+    return data.cards
   }
 
-  render() {  
-    console.log(this.state.cuttedDeck)
-    return (
-      <div className="App">
-        <div className="pile">
-          <Box number={1}/>
-          <Card link="https://deckofcardsapi.com/static/img/KH.png"/>
-          <Card link="https://deckofcardsapi.com/static/img/KH.png" />
-        </div>
-        <div className="pile">
-          <Box number={2}/>
-          <Card link="https://deckofcardsapi.com/static/img/KH.png" />
-        </div>
-        <div className="pile">
-          <Box number={3}/>
-          <Card link="https://deckofcardsapi.com/static/img/KH.png" />
-        </div>
+  async componentDidMount() {
+    await this.remontDeck()
+    const pileOne = await this.pile()
+    const pileTwo = await this.pile()
+    const pileThree = await this.pile()
+    this.setState({ pileOne, pileTwo, pileThree })
+    console.log(pileTwo)
+    // axios.get('https://deckofcardsapi.com/api/deck/7kyhwcq3nxhi/draw/?count=7')
+    //   .then(resp => {
+    //     this.setState({ pileOne: resp.data.cards })
+    //     console.log(this.state.pileOne)
+    //   })
 
-      </div>
-    );
+    
+
+  }
+
+  render() {
+
+    if (this.state.pileOne.length === 0 && this.state.pileTwo.length === 0 && this.state.pileThree.length === 0 ) {
+      return(
+        <div> pas</div>
+      )
+    } else {
+      return (
+        <div className="App">
+          <div className="pile">
+            <Box number={1} />
+            {this.state.pileOne.map((element,key) => {
+              return <Card key={key} link={element.image} />
+            })} 
+          </div>
+          <div className="pile">
+            <Box number={2} />
+            {this.state.pileTwo.map((element,key) => {
+              return <Card key={key} link={element.image} />
+            })}
+          </div>
+          <div className="pile">
+            <Box number={3} />
+            {this.state.pileThree.map((element,key) => {
+              return <Card key={key} link={element.image} />
+            })}
+          </div>
+
+        </div>
+      );
+    }
   }
 }
 
