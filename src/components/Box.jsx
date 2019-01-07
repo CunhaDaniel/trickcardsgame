@@ -2,10 +2,10 @@ import React from 'react'
 
 export default props => {
     return(
-        <div>
+        <button onClick= {props.remount}>
             <h1>
                 {props.number}
             </h1>
-        </div>
+        </button>
     )
 }

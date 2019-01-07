@@ -10,10 +10,12 @@ import Box from './Box'
 class App extends Component {
   constructor(props) {
     super(props);
+    this.remountPile = this.remountPile.bind(this);
     this.state = { 
       pileOne: [],
       pileTwo: [],
       pileThree: [],
+      deck: [],
     }
   }
 
@@ -29,7 +31,7 @@ class App extends Component {
   }
 
   async pile(){
-    const cuttedDeck = await axios.get('https://deckofcardsapi.com/api/deck/7kyhwcq3nxhi/draw/?count=7')
+    const cuttedDeck = await axios.get('https://deckofcardsapi.com/api/deck/7kyhwcq3nxhi/draw/?count=21')
       .catch(err => console.log(err))
     await this.remontDeck()
     const { data } = cuttedDeck
@@ -38,24 +40,28 @@ class App extends Component {
 
   async componentDidMount() {
     await this.remontDeck()
-    const pileOne = await this.pile()
-    const pileTwo = await this.pile()
-    const pileThree = await this.pile()
+    const deck = await this.pile()
+    this.setState({ deck })
+    console.log(deck)
+    const pileOne = deck.slice(0,7)
+    const pileTwo = deck.slice(7,14)
+    const pileThree = deck.slice(14,21)
     this.setState({ pileOne, pileTwo, pileThree })
-    console.log(pileTwo)
-    // axios.get('https://deckofcardsapi.com/api/deck/7kyhwcq3nxhi/draw/?count=7')
-    //   .then(resp => {
-    //     this.setState({ pileOne: resp.data.cards })
-    //     console.log(this.state.pileOne)
-    //   })
+  }
 
-    
-
+  remountPile(number){
+    if(number === 1){ 
+      console.log("FOI 1")
+    }else if(number === 2){
+      console.log("FOI 2")
+    }else{
+      console.log("FOI 3")
+    }
   }
 
   render() {
 
-    if (this.state.pileOne.length === 0 && this.state.pileTwo.length === 0 && this.state.pileThree.length === 0 ) {
+    if (this.state.deck.length === 0 ) {
       return(
         <div> pas</div>
       )
@@ -63,19 +69,19 @@ class App extends Component {
       return (
         <div className="App">
           <div className="pile">
-            <Box number={1} />
+            <Box number={1} remount={() => {this.remountPile(1)}}/>
             {this.state.pileOne.map((element,key) => {
               return <Card key={key} link={element.image} />
             })} 
           </div>
           <div className="pile">
-            <Box number={2} />
+            <Box number={2} remount={() => {this.remountPile(2)}}/>
             {this.state.pileTwo.map((element,key) => {
               return <Card key={key} link={element.image} />
             })}
           </div>
           <div className="pile">
-            <Box number={3} />
+            <Box number={3} remount={() =>{this.remountPile(3)}}/>
             {this.state.pileThree.map((element,key) => {
               return <Card key={key} link={element.image} />
             })}
