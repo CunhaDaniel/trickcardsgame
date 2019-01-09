@@ -16,6 +16,7 @@ class App extends Component {
       pileTwo: [],
       pileThree: [],
       deck: [],
+      count: 0,
     }
   }
 
@@ -42,28 +43,67 @@ class App extends Component {
     await this.remontDeck()
     const deck = await this.pile()
     this.setState({ deck })
-    console.log(deck)
     const pileOne = deck.slice(0,7)
     const pileTwo = deck.slice(7,14)
     const pileThree = deck.slice(14,21)
     this.setState({ pileOne, pileTwo, pileThree })
   }
 
+  dividesDeck(deck){
+    let pileOne = []
+    let pileTwo = []
+    let pileThree = []
+    let index = 1
+    deck.forEach(element => {
+      if(index === 1){
+        pileOne.push(element)
+      }else if(index === 2){  
+        pileTwo.push(element)
+      }else{
+        pileThree.push(element)
+        index = 0
+      }
+      index ++;
+    });
+    this.setState({ pileOne: pileOne, pileTwo: pileTwo, pileThree: pileThree })
+  }
+
   remountPile(number){
     if(number === 1){ 
-      console.log("FOI 1")
+      const deck = this.state.pileTwo.concat(this.state.pileOne,this.state.pileTwo)
+      this.setState({ deck })
+      this.dividesDeck(deck)
     }else if(number === 2){
-      console.log("FOI 2")
+      const deck = this.state.pileOne.concat(this.state.pileTwo,this.state.pileThree)
+      this.setState({ deck })
+      this.dividesDeck(deck)
     }else{
-      console.log("FOI 3")
+      const deck = this.state.pileOne.concat(this.state.pileThree,this.state.pileTwo)
+      this.setState({ deck })
+      this.dividesDeck(deck)
     }
+    this.setState({count: this.state.count + 1})
+  }
+
+  async restartGame(){
+    await this.componentDidMount()
+    this.setState({ count: 0})
   }
 
   render() {
-
-    if (this.state.deck.length === 0 ) {
+    if (this.state.count === 3){
       return(
-        <div> pas</div>
+        <div className="win-screen">
+          A sua carta é:
+         <Card link={this.state.deck[10].image}/>
+          <button className="btn primary-button" onClick={() => this.restartGame()}>
+                  Play again
+          </button>
+        </div>
+      )
+    }else if (this.state.deck.length === 0 ) {
+      return(
+        <div></div>
       )
     } else {
       return (
@@ -86,7 +126,6 @@ class App extends Component {
               return <Card key={key} link={element.image} />
             })}
           </div>
-
         </div>
       );
     }

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default props => {
     return(
-        <button onClick= {props.remount}>
+        <button className="btn" onClick= {props.remount}>
             <h1>
                 {props.number}
             </h1>

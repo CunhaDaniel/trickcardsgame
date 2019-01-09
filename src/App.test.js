@@ -1,6 +1,6 @@
 // import React from 'react';
 // import ReactDOM from 'react-dom';
-// import App from './components/App';
+import App from './components/App';
 import Sum from './components/sum'
 
 // it('renders without crashing', () => {

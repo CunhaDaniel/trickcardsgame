@@ -13,3 +13,12 @@
 .card-box{
     padding: 10px;
 }
+
+@media screen and (max-width: 768px){
+    .pile {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
