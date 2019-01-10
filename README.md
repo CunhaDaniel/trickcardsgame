@@ -20,7 +20,7 @@ Run tests
 npm test
 ```
 # Desktop Screen 
-I choose 8HS
+I choose 8Daimonds
 ![image](imgs/desktop.gif)
 
 # Mobile Screen
