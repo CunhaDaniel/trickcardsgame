@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import App from '../src/components/App'
 import Box from '../src/components/Box'
@@ -36,3 +36,4 @@ describe('Testing component card', () => {
     wrapper.setProps({ link: "https://deckofcardsapi.com/static/img/8H.png" })
   })
 })
+

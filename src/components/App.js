@@ -42,11 +42,10 @@ class App extends Component {
   async componentDidMount() {
     await this.remontDeck()
     const deck = await this.pile()
-    this.setState({ deck })
     const pileOne = deck.slice(0,7)
     const pileTwo = deck.slice(7,14)
     const pileThree = deck.slice(14,21)
-    this.setState({ pileOne, pileTwo, pileThree })
+    this.setState({ pileOne, pileTwo, pileThree, deck })
   }
 
   dividesDeck(deck){
@@ -77,7 +76,7 @@ class App extends Component {
       const deck = this.state.pileOne.concat(this.state.pileTwo,this.state.pileThree)
       this.setState({ deck })
       this.dividesDeck(deck)
-    }else{
+    }else {
       const deck = this.state.pileOne.concat(this.state.pileThree,this.state.pileTwo)
       this.setState({ deck })
       this.dividesDeck(deck)
@@ -100,10 +99,6 @@ class App extends Component {
                   Play again
           </button>
         </div>
-      )
-    }else if (this.state.deck.length === 0 ) {
-      return(
-        <div></div>
       )
     } else {
       return (

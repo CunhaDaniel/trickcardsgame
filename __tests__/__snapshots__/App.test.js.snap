@@ -16,9 +16,131 @@ ShallowWrapper {
     "instance": null,
     "key": undefined,
     "nodeType": "host",
-    "props": Object {},
+    "props": Object {
+      "children": Array [
+        <div
+          className="pile"
+        >
+          <_default
+            number={1}
+            remount={[Function]}
+          />
+        </div>,
+        <div
+          className="pile"
+        >
+          <_default
+            number={2}
+            remount={[Function]}
+          />
+        </div>,
+        <div
+          className="pile"
+        >
+          <_default
+            number={3}
+            remount={[Function]}
+          />
+        </div>,
+      ],
+      "className": "App",
+    },
     "ref": null,
-    "rendered": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <_default
+              number={1}
+              remount={[Function]}
+            />,
+            Array [],
+          ],
+          "className": "pile",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "number": 1,
+              "remount": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <_default
+              number={2}
+              remount={[Function]}
+            />,
+            Array [],
+          ],
+          "className": "pile",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "number": 2,
+              "remount": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <_default
+              number={3}
+              remount={[Function]}
+            />,
+            Array [],
+          ],
+          "className": "pile",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "number": 3,
+              "remount": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": "div",
+      },
+    ],
     "type": "div",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -26,9 +148,131 @@ ShallowWrapper {
       "instance": null,
       "key": undefined,
       "nodeType": "host",
-      "props": Object {},
+      "props": Object {
+        "children": Array [
+          <div
+            className="pile"
+          >
+            <_default
+              number={1}
+              remount={[Function]}
+            />
+          </div>,
+          <div
+            className="pile"
+          >
+            <_default
+              number={2}
+              remount={[Function]}
+            />
+          </div>,
+          <div
+            className="pile"
+          >
+            <_default
+              number={3}
+              remount={[Function]}
+            />
+          </div>,
+        ],
+        "className": "App",
+      },
       "ref": null,
-      "rendered": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <_default
+                number={1}
+                remount={[Function]}
+              />,
+              Array [],
+            ],
+            "className": "pile",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "number": 1,
+                "remount": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <_default
+                number={2}
+                remount={[Function]}
+              />,
+              Array [],
+            ],
+            "className": "pile",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "number": 2,
+                "remount": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <_default
+                number={3}
+                remount={[Function]}
+              />,
+              Array [],
+            ],
+            "className": "pile",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "number": 3,
+                "remount": [Function],
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": "div",
+        },
+      ],
       "type": "div",
     },
   ],
